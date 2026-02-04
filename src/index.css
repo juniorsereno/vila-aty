@@ -1,0 +1,141 @@
+:root {
+  /* Colors - Sophisticated Nature */
+  --bg-primary: #0F221E;
+  /* Deep Forest Green */
+  --bg-secondary: #1A2F2B;
+  /* Lighter Moss */
+  --text-primary: #F0F2E9;
+  /* Off-white/Bone */
+  --text-secondary: #A8B8B0;
+  /* Muted Sage */
+
+  --accent-primary: #D4AF37;
+  /* Elegant Gold */
+  --accent-secondary: #56C2A8;
+  /* Soft Teal/Water */
+  --accent-glow: rgba(86, 194, 168, 0.4);
+
+  /* Glassmorphism - warmer/softer */
+  --glass-bg: rgba(15, 34, 30, 0.7);
+  --glass-border: rgba(212, 175, 55, 0.15);
+  /* Gold tint border */
+  --glass-blur: 12px;
+
+  /* Spacing */
+  --section-padding: 8rem 2rem;
+  --max-width: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  /* More relaxed reading */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  font-weight: 300;
+  /* Lighter weight for elegance */
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+strong {
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Utilities */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #FFF 0%, var(--accent-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  /* Sharper corners for luxury */
+  padding: 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 3rem;
+  border-radius: 2px;
+  /* Square/Sharp for elegance */
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 0.8rem;
+}
+
+.btn:hover {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
