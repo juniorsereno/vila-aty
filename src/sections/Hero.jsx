@@ -73,7 +73,7 @@ const Hero = () => {
                 </a>
 
                 {/* Stats/Highlight or small grid below */}
-                <div style={{
+                <div className="hero-stats" style={{
                     marginTop: '6rem',
                     display: 'grid',
                     gridTemplateColumns: 'repeat(3, 1fr)',
@@ -81,16 +81,16 @@ const Hero = () => {
                     paddingTop: '3rem'
                 }}>
                     <div style={{ borderRight: '1px solid rgba(255,255,255,0.05)' }}>
-                        <p style={{ fontSize: '0.8rem', opacity: 0.6, letterSpacing: '0.1em' }}>EXPERIÊNCIA</p>
-                        <h3 style={{ fontSize: '1.2rem', fontWeight: 400, marginTop: '0.5rem' }}>Personalizada</h3>
+                        <p style={{ fontSize: '0.8rem', opacity: 0.6, letterSpacing: '0.1em' }}>CONEXÃO</p>
+                        <h3 style={{ fontSize: '1.2rem', fontWeight: 400, marginTop: '0.5rem' }}>Instantânea</h3>
                     </div>
                     <div style={{ borderRight: '1px solid rgba(255,255,255,0.05)' }}>
-                        <p style={{ fontSize: '0.8rem', opacity: 0.6, letterSpacing: '0.1em' }}>DISPONIBILIDADE</p>
-                        <h3 style={{ fontSize: '1.2rem', fontWeight: 400, marginTop: '0.5rem' }}>Eterna</h3>
+                        <p style={{ fontSize: '0.8rem', opacity: 0.6, letterSpacing: '0.1em' }}>PRESENÇA</p>
+                        <h3 style={{ fontSize: '1.2rem', fontWeight: 400, marginTop: '0.5rem' }}>24 Horas</h3>
                     </div>
                     <div>
-                        <p style={{ fontSize: '0.8rem', opacity: 0.6, letterSpacing: '0.1em' }}>ALMA</p>
-                        <h3 style={{ fontSize: '1.2rem', fontWeight: 400, marginTop: '0.5rem' }}>Humana</h3>
+                        <p style={{ fontSize: '0.8rem', opacity: 0.6, letterSpacing: '0.1em' }}>DNA</p>
+                        <h3 style={{ fontSize: '1.2rem', fontWeight: 400, marginTop: '0.5rem' }}>Preservado</h3>
                     </div>
                 </div>
 

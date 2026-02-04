@@ -4,13 +4,7 @@ import Section from '../components/Section';
 const CRM = () => {
     return (
         <Section id="crm">
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'minmax(300px, 1fr) 1.5fr',
-                gap: '4rem',
-                alignItems: 'center',
-                width: '100%'
-            }}>
+            <div className="grid-2-col" style={{ gridTemplateColumns: 'minmax(300px, 1fr) 1.5fr' }}>
 
                 {/* Left: Copy */}
                 <div>
@@ -52,7 +46,7 @@ const CRM = () => {
                 </div>
 
                 {/* Right: Dashboard Mock */}
-                <div className="glass-card" style={{
+                <div className="glass-card crm-dashboard-mock" style={{
                     padding: '2rem',
                     background: 'rgba(15, 34, 30, 0.6)',
                     border: '1px solid rgba(212, 175, 55, 0.2)',

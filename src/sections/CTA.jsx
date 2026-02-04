@@ -28,7 +28,7 @@ const CTA = () => {
                 </p>
 
                 {/* Timeline */}
-                <div style={{
+                <div className="timeline-container" style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     gap: '1rem',

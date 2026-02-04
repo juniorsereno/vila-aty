@@ -139,3 +139,93 @@ img {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-primary);
 }
+
+/* --- Responsive Utilities --- */
+
+/* Grid Utility for Desktop (2 columns) */
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 6rem 1.5rem;
+  }
+
+  /* Force stack on mobile */
+  .grid-2-col,
+  .responsive-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+    text-align: center;
+    /* Generally looks better on mobile */
+  }
+
+  /* Adjust Hero Typography */
+  h1 {
+    font-size: 2.5rem !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+
+  /* Hero Stats */
+  .hero-stats {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+    border-top: none !important;
+    padding-top: 1rem !important;
+  }
+
+  .hero-stats>div {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Timeline */
+  .timeline-container {
+    flex-direction: column !important;
+    gap: 3rem !important;
+  }
+
+  /* Header Adjustments */
+  header {
+    padding: 1rem !important;
+  }
+
+  header img {
+    height: 40px !important;
+  }
+
+  /* Hide Navigation Dots on Mobile */
+  nav {
+    display: none !important;
+  }
+
+  /* Fix Dashboard Tilted Mock on Mobile to be flat and fully visible */
+  .crm-dashboard-mock {
+    transform: none !important;
+    margin-top: 2rem;
+  }
+
+  /* Left borders usually look weird when centered, remove them */
+  .glass-card[style*="borderLeft"] {
+    border-left: none !important;
+    border-top: 4px solid var(--accent-secondary) !important;
+  }
+
+  /* WhyUs Manifesto Line */
+  .manifesto-text {
+    border-left: none !important;
+    border-top: 1px solid var(--accent-primary);
+    padding-left: 0 !important;
+    padding-top: 2rem;
+  }
+}

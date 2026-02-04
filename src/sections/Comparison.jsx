@@ -16,7 +16,7 @@ const Comparison = () => {
                     </p>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                <div className="grid-2-col responsive-grid" style={{ alignItems: 'stretch', gap: '2rem' }}>
 
                     {/* Card 1: The Human Challenge */}
                     <div className="glass-card" style={{ borderTop: '4px solid #555' }}>

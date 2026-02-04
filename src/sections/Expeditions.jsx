@@ -4,13 +4,7 @@ import Section from '../components/Section';
 const Expeditions = () => {
     return (
         <Section id="expeditions">
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '4rem',
-                alignItems: 'center',
-                width: '100%'
-            }}>
+            <div className="grid-2-col">
 
                 {/* Left Side: Copy */}
                 <div>

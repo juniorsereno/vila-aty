@@ -4,18 +4,13 @@ import Section from '../components/Section';
 const WhyUs = () => {
     return (
         <Section id="why-us">
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '4rem',
-                alignItems: 'center'
-            }}>
+            <div className="grid-2-col">
                 {/* Left Side: Emotional Manifesto */}
                 <div>
                     <h2 style={{ fontSize: '3rem', marginBottom: '2rem' }}>
                         Uma carta aberta à <span className="text-gradient">Vila Aty.</span>
                     </h2>
-                    <div style={{
+                    <div className="manifesto-text" style={{
                         fontSize: '1.1rem',
                         lineHeight: 1.8,
                         color: 'var(--text-secondary)',
