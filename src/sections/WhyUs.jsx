@@ -36,7 +36,7 @@ const WhyUs = () => {
 
                     <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                         <img
-                            src="/sereno-foto.jpg"
+                            src="/vila-aty/sereno-foto.jpg"
                             alt="Junior Sereno"
                             style={{
                                 width: '60px',

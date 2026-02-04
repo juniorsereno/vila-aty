@@ -64,7 +64,7 @@ function App() {
 
         <div style={{ opacity: 0.9 }}>
           <img
-            src="/Creativa-logo-completa.png"
+            src="/vila-aty/Creativa-logo-completa.png"
             alt="Criativa + AI"
             style={{ height: '50px' }} // Adjust height to match Vila Aty logo
           />

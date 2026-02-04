@@ -11,7 +11,7 @@ const CTA = () => {
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundImage: 'url(/vila-aty-foto-luxo.jpg)',
+                backgroundImage: 'url(/vila-aty/vila-aty-foto-luxo.jpg)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 opacity: 0.2,

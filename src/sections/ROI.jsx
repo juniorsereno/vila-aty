@@ -18,7 +18,7 @@ const ROI = () => {
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundImage: 'url(/foto-vila-aty-super-luxo.jpg)',
+                backgroundImage: 'url(/vila-aty/foto-vila-aty-super-luxo.jpg)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 opacity: 0.2,

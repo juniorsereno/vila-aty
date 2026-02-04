@@ -11,7 +11,7 @@ const Hero = () => {
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundImage: 'url(/foto-vila-aty-super-premium.jpg)',
+                backgroundImage: 'url(/vila-aty/foto-vila-aty-super-premium.jpg)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 opacity: 0.1,

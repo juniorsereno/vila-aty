@@ -46,7 +46,7 @@ const Navigation = ({ activeId }) => {
                 >
                     {activeId === section.id ? (
                         <img
-                            src="/logo-reduzida.png"
+                            src="/vila-aty/logo-reduzida.png"
                             alt="Active"
                             style={{
                                 width: '100%',

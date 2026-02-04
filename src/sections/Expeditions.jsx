@@ -30,7 +30,7 @@ const Expeditions = () => {
                         border: '1px solid var(--glass-border)'
                     }}>
                         <img
-                            src="/foto-vila-aty-premium.jpg"
+                            src="/vila-aty/foto-vila-aty-premium.jpg"
                             alt="Experiência Vila Aty"
                             style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
                         />
