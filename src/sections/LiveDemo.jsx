@@ -3,9 +3,9 @@ import Section from '../components/Section';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // API Configuration
-// WARNING: exposing keys in client-side code is risky for production.
-// For this demo context, we proceed as requested.
-const API_KEY = "AIzaSyCZJC3b5QvZHJRYntw4zHMlV1pJ1Iqxg3E";
+// A chave da API é carregada do arquivo .env via variável de ambiente VITE_GOOGLE_API_KEY
+// Para Vite, variáveis de ambiente que começam com VITE_ são expostas ao cliente
+const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 const LiveDemo = () => {
