@@ -19,10 +19,11 @@ const API_KEY = process.env.GOOGLE_API_KEY;
 
 if (!API_KEY) {
   console.error('ERROR: GOOGLE_API_KEY environment variable is not set');
-  process.exit(1);
+  console.error('Please set the GOOGLE_API_KEY environment variable');
+  // Não sair do processo, apenas logar o erro para facilitar debug
 }
 
-const genAI = new GoogleGenerativeAI(API_KEY);
+const genAI = API_KEY ? new GoogleGenerativeAI(API_KEY) : null;
 
 // System prompt para a Brisa (Anfitriã da Vila Aty)
 const SYSTEM_PROMPT = `Você é o Concierge da Vila Aty, um eco-resort de luxo em Atins. Siga esse system prompt: # PERSONA: O ANFITRIÃO VILA ATY
@@ -66,6 +67,9 @@ Você domina a logística para Atins. Quando questionado, explique de forma clar
 # Pilar 6: Foco em Resultados - Garante que a IA ajude a vender e não apenas converse.
 
 ## CONTEXTO DA VILA ATY
+- Instagram: https://www.instagram.com/vilaaty
+- Localização: https://maps.app.goo.gl/w3sW49bhoAvoj9N6A 
+- Site: https://vilaaty.com.br
 - Metade da área (2.000m²) está dentro do Parque Nacional.
 - Sustentabilidade real: usamos biodigestores e madeira certificada.
 - 80% da equipe é local. Valorizamos as pessoas de Atins.
@@ -81,6 +85,10 @@ Você domina a logística para Atins. Quando questionado, explique de forma clar
 // API endpoint para chat
 app.post('/api/chat', async (req, res) => {
   try {
+    if (!genAI) {
+      return res.status(500).json({ error: 'API key not configured' });
+    }
+
     const { message, history } = req.body;
 
     if (!message) {
