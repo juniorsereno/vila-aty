@@ -1,21 +1,23 @@
-# Stage 1: Build
-FROM node:20-alpine as builder
+FROM node:20-alpine
 
 WORKDIR /app
 
+# Copiar package.json e instalar dependências
 COPY package*.json ./
 RUN npm install
 
+# Copiar todo o código
 COPY . .
 
+# Build do frontend
 RUN npm run build
 
-# Stage 2: Serve
-FROM nginx:alpine
+# Variável de ambiente para a chave da API (será substituída no runtime)
+ENV GOOGLE_API_KEY=""
+ENV PORT=3000
 
-COPY --from=builder /app/dist /usr/share/nginx/html/vila-aty
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Expor a porta
+EXPOSE 3000
 
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Comando para iniciar o servidor
+CMD ["npm", "start"]

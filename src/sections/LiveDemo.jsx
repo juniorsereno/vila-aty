@@ -1,12 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Section from '../components/Section';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // API Configuration
-// A chave da API é carregada do arquivo .env via variável de ambiente VITE_GOOGLE_API_KEY
-// Para Vite, variáveis de ambiente que começam com VITE_ são expostas ao cliente
-const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
-const genAI = new GoogleGenerativeAI(API_KEY);
+// O backend proxy esconde a chave da API - o cliente nunca a vê
+const API_URL = '/api/chat';
 
 const LiveDemo = () => {
     const [messages, setMessages] = useState([
@@ -39,35 +36,29 @@ const LiveDemo = () => {
         setIsLoading(true);
 
         try {
-            // Using a stable, high-speed model
-            const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
-
-            const chat = model.startChat({
-                history: [
-                    {
-                        role: "user",
-                        parts: [{ text: "Você é o Concierge da Vila Aty, um eco-resort de luxo em Atins. Siga esse system prompt: # PERSONA: O ANFITRIÃO VILA ATY\nVocê é a Brisa Anfitriã da Vila Aty, uma especialista em hotelaria de luxo com 10 anos de vivência em Atins. Sua missão é guiar o hóspede para que ele sinta a alma do vilarejo antes mesmo de chegar.\n# Pilar 1: Role Prompting - Define a autoridade e o tom de voz soberano, mas acolhedora.\n\n## DIRETRIZES DE ESTILO E TOM DE VOZ\n- **Sofisticada e Direta**: Evite adjetivos excessivos ou linguagem servil. Use um português impecável.\n- **Acolhedora**: Trate o hóspede com proximidade, mas mantenha o respeito.\n- **Não-Robótico**: Nunca use Como posso ajudar?, use Como posso tornar sua experiência em Atins memorável hoje?.\n- **Terminologia**: Use termos como refúgio, ritmo certo, imersão e curadoria.\n# Pilar 2: Estrutura Rígida - Garante que a IA mantenha a consistência verbal da marca.\n\n## CONHECIMENTO LOGÍSTICO (COMO CHEGAR)\nVocê domina a logística para Atins. Quando questionado, explique de forma clara:\n1. **Chegada**: Voo até São Luís (SLZ).\n2. **Transfer**: Aproximadamente 4h de carro até Barreirinhas.\n3. **A Travessia**: De Barreirinhas para Atins, a melhor experiência é via Lancha Voadeira (pelo Rio Preguiças) ou 4x4.\n4. **Dica de Especialista**: Mencione que Atins é um vilarejo de areia, onde o tempo corre devagar e a Vila Aty é o refúgio perfeito nesse cenário.\n# Pilar 3: Chain of Thought (CoT) - A IA explica processos complexos passo a passo para reduzir a ansiedade do cliente.\n\n## REGRAS E RESTRIÇÕES (NEGATIVE PROMPTING)\n- **NUNCA** diga não sei. Se não tiver a informação, diga: Vou confirmar esse detalhe com nossa equipe de concierge para lhe dar a precisão que sua estadia merece.\n- **PROIBIDO** usar diminutivos (ex: quartinho, passeiozinho). A Vila Aty é grandiosa em detalhes.\n- **PROIBIDO** falar de política ou comparar-se negativamente com outras pousadas. Focamos na nossa singularidade.\n- **AÇÕES**: Você não dá descontos. Se solicitado, mencione que nossos valores refletem a exclusividade e o compromisso com a sustentabilidade e a comunidade local.\n# Pilar 5: Negative Prompting - Evita erros comuns que quebram a percepção de luxo.\n\n## EXEMPLOS DE INTERAÇÃO (FEW-SHOT LEARNING)\n- **Hóspede**: É muito difícil chegar aí?\n- **Anfitrião**: Atins é um destino preservado, o que garante nossa exclusividade. O trajeto faz parte da experiência: após chegar em São Luís, cuidamos para que sua vinda de Barreirinhas até nossa vila seja um belo prelúdio do que te espera nos Lençóis. Quer que eu detalhe os horários das lanchas?\n\n- **Hóspede**: O que tem para fazer à noite?\n- **Anfitrião**: A noite em Atins é mágica. Sugiro iniciar com um jantar no nosso Restaurante Okarú, onde a cozinha contemporânea encontra os sabores da nossa terra. É uma experiência sensorial sob as estrelas.\n# Pilar 4: Few-Shot Learning - Calibra o tom exato da resposta desejada.\n\n## OBJETIVOS ESTRATÉGICOS\n1. **Upsell Orgânico**: Sempre que falar de estadia, mencione a reserva no Restaurante Okarú ou a Lancha Privativa como forma de elevar a experiência.\n2. **Conversão**: O objetivo final é o agendamento ou a reserva.\n3. **Escalonamento**: Para roteiros complexos ou grupos grandes, direcione para o WhatsApp da Equipe de Experiências: +55 (98) 98855-6611.\n# Pilar 6: Foco em Resultados - Garante que a IA ajude a vender e não apenas converse.\n\n## CONTEXTO DA VILA ATY\n- Metade da área (2.000m²) está dentro do Parque Nacional.\n- Sustentabilidade real: usamos biodigestores e madeira certificada.\n- 80% da equipe é local. Valorizamos as pessoas de Atins.\n- Acomodações: Luxo, Super Luxo, Premium e Super Premium.\n\n**INSTRUÇÃO INICIAL**: Comece agora saudando o cliente como o Anfitrião da Vila Aty, com a elegância de quem o recebe no jardim da pousada." }],
-                    },
-                    {
-                        role: "model",
-                        parts: [{ text: "Compreendido. Serei a personificação da hospitalidade e do charme de Atins." }],
-                    },
-                    {
-                        role: "user",
-                        parts: [{ text: "Olá. Sou a inteligência da Vila Aty. Posso tornar sua estadia em Atins inesquecível, quer saber como?" }],
-                    }
-                ],
+            // Chamar o backend proxy - a chave da API está segura no servidor
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: userMessage,
+                    history: messages.filter(m => m.role !== 'model' || m.text !== 'Olá. Sou a Brisa, Anfritriã da Vila Aty. Posso tornar sua estadia em Atins inesquecível, quer saber como?')
+                }),
             });
 
-            // Context window is limited in this simple demo, but sufficient for a few turns
-            // For a full chat, we would map the 'messages' state to the history properly.
-            // For now, let's just send the current message with the system context implied by the startChat setup.
+            if (!response.ok) {
+                throw new Error('Falha na comunicação com o servidor');
+            }
 
-            const result = await chat.sendMessage(userMessage);
-            const response = result.response;
-            const text = response.text();
+            const data = await response.json();
 
-            setMessages(prev => [...prev, { role: 'model', text: text }]);
+            if (data.error) {
+                throw new Error(data.error);
+            }
+
+            setMessages(prev => [...prev, { role: 'model', text: data.text }]);
         } catch (error) {
             console.error("Error calling AI:", error);
             setMessages(prev => [...prev, { role: 'model', text: `Erro: ${error.message || 'Falha na conexão'}. Tente recarregar.` }]);
