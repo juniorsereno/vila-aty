@@ -10,7 +10,7 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 
 const LiveDemo = () => {
     const [messages, setMessages] = useState([
-        { role: 'model', text: 'Olá. Sou a inteligência da Vila Aty. Posso tornar sua estadia em Atins inesquecível, quer saber como?' }
+        { role: 'model', text: 'Olá. Sou a Brisa, Anfritriã da Vila Aty. Posso tornar sua estadia em Atins inesquecível, quer saber como?' }
     ]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
