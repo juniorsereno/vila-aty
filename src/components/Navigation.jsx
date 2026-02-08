@@ -7,6 +7,7 @@ const sections = [
     { id: 'expeditions', label: 'Aty Expedições' },
     { id: 'crm', label: 'CRM & Controle' },
     { id: 'roi', label: 'Impacto & ROI' },
+    { id: 'proposal', label: 'Investimento & Parceria' },
     { id: 'live-demo', label: 'Demo Interativa' },
     { id: 'cta', label: 'Próximos Passos' }
 ];

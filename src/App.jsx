@@ -8,6 +8,7 @@ import CRM from './sections/CRM';
 import WhyUs from './sections/WhyUs';
 import CTA from './sections/CTA';
 import LiveDemo from './sections/LiveDemo';
+import Proposal from './sections/Proposal';
 import './App.css';
 
 function App() {
@@ -81,6 +82,7 @@ function App() {
         <Expeditions />
         <CRM />
         <ROI />
+        <Proposal />
         <LiveDemo />
         <CTA />
       </main>
