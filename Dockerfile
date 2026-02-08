@@ -1,4 +1,5 @@
-FROM node:20-alpine
+# Usando imagem do ECR Public para evitar rate limit do Docker Hub
+FROM public.ecr.aws/docker/library/node:20-alpine
 
 WORKDIR /app
 
